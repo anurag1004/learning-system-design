@@ -2,6 +2,7 @@ package parkinglot.model.parking;
 
 import parkinglot.model.config.ParkingLotConfig;
 import parkinglot.model.enums.VehicleType;
+import parkinglot.model.exceptions.NoSuchParkingSlotStrategyExistsException;
 import parkinglot.model.exceptions.NoSuchSlotExistsException;
 import parkinglot.model.exceptions.SlotAlreadyOccupiedException;
 import parkinglot.model.exceptions.UnableToParseTicketStringException;
@@ -23,7 +24,7 @@ public class ParkingLot {
     private ParkingLotConfig config;
     private List<Ticket> issuedTickets;
 
-    public ParkingLot(String id, int floors, int slotsPerFloor, ParkingLotConfig config){
+    public ParkingLot(String id, int floors, int slotsPerFloor, ParkingLotConfig config) throws NoSuchParkingSlotStrategyExistsException {
         this.floors = floors;
         this.id = id;
         this.floorMap = new HashMap<>();
@@ -65,12 +66,16 @@ public class ParkingLot {
         }
     }
     public void showFreeSlotsPerFloor(VehicleType vehicleType){
+        System.out.printf("----FREE SLOTS FOR %s----\n",vehicleType.toString());
         for(int floorId: floorMap.keySet()){
+            System.out.println("Floor: "+floorId);
             floorMap.get(floorId).showFreeSlots(vehicleType);
         }
     }
     public void showOccupiedSlotsPerFloor(VehicleType vehicleType){
+        System.out.printf("----OCCUPIED SLOTS FOR %s----\n",vehicleType.toString());
         for(int floorId: floorMap.keySet()){
+            System.out.println("Floor: "+floorId);
             floorMap.get(floorId).showOccupiedSlots(vehicleType);
         }
     }

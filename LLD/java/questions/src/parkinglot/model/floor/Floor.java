@@ -1,13 +1,16 @@
 package parkinglot.model.floor;
 
 import parkinglot.model.config.ParkingLotConfig;
+import parkinglot.model.enums.ParkingSlotStrategyType;
 import parkinglot.model.enums.VehicleType;
+import parkinglot.model.exceptions.NoSuchParkingSlotStrategyExistsException;
 import parkinglot.model.exceptions.NoSuchSlotExistsException;
 import parkinglot.model.exceptions.SlotAlreadyOccupiedException;
 import parkinglot.model.parking.ParkingSlotManager;
 import parkinglot.model.slot.Slot;
 import parkinglot.model.vehicle.Vehicle;
 import parkinglot.strategies.ConsolePrinter;
+import parkinglot.strategies.NearestParkingSlotStrategy;
 import parkinglot.strategies.Printer;
 
 import java.util.HashMap;
@@ -18,14 +21,15 @@ public class Floor {
     private int floorNo;
     private int slots;
     private Printer slotPrinter;
-    private ParkingSlotManager parkingSlotManager = ParkingSlotManager.getInstance();
+    private ParkingSlotManager parkingSlotManager;
 
 
-    public Floor(int floorNo, int slots, ParkingLotConfig config, Printer printer) {
+    public Floor(int floorNo, int slots, ParkingLotConfig config, Printer printer) throws NoSuchParkingSlotStrategyExistsException {
         this.floorNo = floorNo;
         this.slots = slots;
         this.slotMap = new HashMap<>();
         this.slotPrinter = printer;
+        this.parkingSlotManager = ParkingSlotManager.getInstance(config.getParkingSlotStrategyType());
         int slotId = 0;
         for(VehicleType vehicleType: VehicleType.values()){
             int percent = config.getParkingSpacePercent(vehicleType);
@@ -47,20 +51,20 @@ public class Floor {
         return cnt;
     }
     public void showFreeSlots(VehicleType vehicleType){
-        System.out.println("--------");
         for(int slotId: slotMap.keySet()){
-            if(!slotMap.get(slotId).isOccupied() && slotMap.get(slotId).getOccupiedBy().getType().equals(vehicleType)){
+            if(!slotMap.get(slotId).isOccupied() && slotMap.get(slotId).getVehicleType().equals(vehicleType)){
                 slotPrinter.print(slotMap.get(slotId));
             }
         }
+        System.out.println();
     }
     public void showOccupiedSlots(VehicleType vehicleType){
-        System.out.println("--------");
         for(int slotId: slotMap.keySet()){
-            if(slotMap.get(slotId).isOccupied() && slotMap.get(slotId).getOccupiedBy().getType().equals(vehicleType)){
+            if(slotMap.get(slotId).isOccupied() && slotMap.get(slotId).getVehicleType().equals(vehicleType)){
                 slotPrinter.print(slotMap.get(slotId));
             }
         }
+        System.out.println();
     }
     public boolean bookSlot(int slotId, Vehicle vehicle) throws NoSuchSlotExistsException, SlotAlreadyOccupiedException {
         if(!slotMap.containsKey(slotId)){

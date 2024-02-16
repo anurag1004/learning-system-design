@@ -3,8 +3,10 @@ package parkinglot;
 import parkinglot.model.config.ParkingLotConfig;
 import parkinglot.model.enums.Command;
 import parkinglot.model.enums.DisplayType;
+import parkinglot.model.enums.ParkingSlotStrategyType;
 import parkinglot.model.enums.VehicleType;
 import parkinglot.model.exceptions.NoSuchDisplayCommandException;
+import parkinglot.model.exceptions.NoSuchParkingSlotStrategyExistsException;
 import parkinglot.model.ticket.Ticket;
 import parkinglot.model.vehicle.Vehicle;
 import parkinglot.service.ParkingLotService;
@@ -35,9 +37,9 @@ public class Driver {
             configMap.put(vehicleType, percents.get(i));
             i++;
         }
-        return new ParkingLotConfig(configMap);
+        return new ParkingLotConfig(configMap, ParkingSlotStrategyType.NEAREST_PARKING_SLOT);
     }
-    public static void main(String[] args) throws IOException, InvalidCommandException {
+    public static void main(String[] args) throws IOException, InvalidCommandException, NoSuchParkingSlotStrategyExistsException {
         ParkingLotService parkingLotService;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter command to create parking lot:\n create_parking_lot <parking_lot_id> <no_of_floors> <no_of_slots_per_floor> \n");
@@ -86,6 +88,8 @@ public class Driver {
                             default:
                                 throw new NoSuchDisplayCommandException("invalid display cmd: "+displayType.toString());
                         }
+                    case EXIT:
+                        System.exit(0);
                 }
             }catch (Exception exception){
                 exception.printStackTrace();
