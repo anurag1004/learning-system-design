@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/ObserverPattern/ObserverPattern.iml" filepath="$PROJECT_DIR$/LLD/java/ObserverPattern/ObserverPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/abstractFactory/abstractFactory.iml" filepath="$PROJECT_DIR$/LLD/java/abstractFactory/abstractFactory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/adapterPattern/adapterPattern.iml" filepath="$PROJECT_DIR$/LLD/java/adapterPattern/adapterPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/builderPattern/builderPattern.iml" filepath="$PROJECT_DIR$/LLD/java/builderPattern/builderPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/factoryPattern/buttonFactory/buttonFactory.iml" filepath="$PROJECT_DIR$/LLD/java/factoryPattern/buttonFactory/buttonFactory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/decoratorPattern/decoratorPattern.iml" filepath="$PROJECT_DIR$/LLD/java/decoratorPattern/decoratorPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/learning-system-design.iml" filepath="$PROJECT_DIR$/.idea/learning-system-design.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/factoryPattern/paymentMethod/paymentMethod.iml" filepath="$PROJECT_DIR$/LLD/java/factoryPattern/paymentMethod/paymentMethod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/proxyPattern/proxyPattern.iml" filepath="$PROJECT_DIR$/LLD/java/proxyPattern/proxyPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/questions/questions.iml" filepath="$PROJECT_DIR$/LLD/java/questions/questions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/singletonPattern/singletonPattern.iml" filepath="$PROJECT_DIR$/LLD/java/singletonPattern/singletonPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/solid-principles/solid-principles.iml" filepath="$PROJECT_DIR$/LLD/java/solid-principles/solid-principles.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/strategyPattern/with-strategy/with-strategy.iml" filepath="$PROJECT_DIR$/LLD/java/strategyPattern/with-strategy/with-strategy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LLD/java/strategyPattern/without-strategy/without-strategy.iml" filepath="$PROJECT_DIR$/LLD/java/strategyPattern/without-strategy/without-strategy.iml" />
+    </modules>
+  </component>
+</project>
